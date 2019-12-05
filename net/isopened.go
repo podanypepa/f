@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// IsOpened test if is on host is opened specifi port
+// IsOpened test if is on host opened specific port
 func IsOpened(host string, port interface{}) (o bool, e error) {
 
 	var p int
@@ -32,6 +32,9 @@ func IsOpened(host string, port interface{}) (o bool, e error) {
 		return false, err
 	}
 
-	_ = conn.Close()
+	if conn != nil {
+		_ = conn.Close()
+	}
+
 	return true, nil
 }
